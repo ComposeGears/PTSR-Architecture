@@ -1,0 +1,27 @@
+[versions]
+agp = "8.10.1"
+android-compileSdk = "36"
+android-minSdk = "24"
+android-targetSdk = "36"
+androidx-activity = "1.10.1"
+composeHotReload = "1.0.0-beta06"
+composeMultiplatform = "1.8.2"
+kotlin = "2.2.10"
+kotlinx-coroutines = "1.10.2"
+tiamat = "2.0.0-alpha03"
+
+[libraries]
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
+kotlinx-coroutinesSwing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
+tiamat-core = { module = "io.github.composegears:tiamat", version.ref = "tiamat" }
+tiamat-destinations = { module = "io.github.composegears:tiamat-destinations", version.ref = "tiamat" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+composeHotReload = { id = "org.jetbrains.compose.hot-reload", version.ref = "composeHotReload" }
+composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
+composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+tiamatDestinations = { id = "io.github.composegears.tiamat.destinations.compiler", version.ref = "tiamat" }
