@@ -11,7 +11,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @OptIn(TiamatExperimentalApi::class)
 @InstallIn(AppGraph::class)
-val DetailsScreen by navDestination {
+val Details by navDestination {
     DetailsUI()
 }
 
