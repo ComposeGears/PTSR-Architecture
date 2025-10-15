@@ -50,6 +50,8 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.tiamat.core)
             implementation(libs.tiamat.destinations)
+            implementation(libs.leviathan)
+            implementation(libs.leviathan.compose)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

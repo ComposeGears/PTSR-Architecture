@@ -1,6 +1,6 @@
 ## Work in progress
 
-# Task-Solution-Presentation
+# Presentation-Task-Solution-Result (PTSR) Architecture
 
 Is an prototype architecture made to bypass overengineared solutions like CleanArchitecture
 
