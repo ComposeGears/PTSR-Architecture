@@ -4,7 +4,7 @@ import composegears.vts.App
 
 fun main() = application {
     Window(
-        title = "vts",
+        title = "PTSR",
         onCloseRequest = { exitApplication() },
     ) {
         App()

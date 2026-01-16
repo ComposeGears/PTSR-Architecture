@@ -1,9 +1,0 @@
-
-XDestination
-XBinding (may be placed directly in the destination)
-XUI
-XPreview [XUI]
-
----------- Example ---------------------------------
-
-

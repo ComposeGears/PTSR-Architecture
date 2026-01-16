@@ -5,7 +5,7 @@ import com.composegears.tiamat.TiamatExperimentalApi
 import com.composegears.tiamat.compose.Navigation
 import com.composegears.tiamat.compose.rememberNavController
 import com.composegears.tiamat.destinations.TiamatGraph
-import composegears.vts.screens.SimpleItemDestination
+import composegears.vts.ui.screens.OrganizationScreen
 
 
 @OptIn(TiamatExperimentalApi::class)
@@ -13,6 +13,6 @@ object AppGraph : TiamatGraph
 
 @Composable
 fun App() {
-    val nc = rememberNavController(startDestination = SimpleItemDestination)
+    val nc = rememberNavController(startDestination = OrganizationScreen)
     Navigation(nc, AppGraph)
 }
