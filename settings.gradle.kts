@@ -1,4 +1,4 @@
-rootProject.name = "vts"
+rootProject.name = "PTSR"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
@@ -17,4 +17,4 @@ dependencyResolutionManagement {
     }
 }
 
-include(":composeApp")
+include(":app-jvm")

@@ -7,14 +7,14 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Text
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import com.composegears.leviathan.Leviathan
 import com.composegears.leviathan.compose.inject
 import com.composegears.tiamat.TiamatExperimentalApi
@@ -25,7 +25,6 @@ import composegears.vts.AppGraph
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 
 // ----- Domain Layer -----
@@ -73,6 +72,7 @@ val SimpleItemDestination by navDestination<Int> {
             value = it
         }
     }
+
     SimpleItemUI(
         itemData = itemData,
         onItemClicked = {}
@@ -91,19 +91,19 @@ private fun SimpleItemUI(
     ) {
         when (itemData) {
             is Status.Loading -> {
-                CircularProgressIndicator()
+                BasicText("Loading...")
             }
             is Status.Failed -> {
-                Text("Failed to load item")
+                BasicText("Failed to load item")
             }
             is Status.Success -> {
                 val item = itemData.item
                 Column(
                     Modifier.clickable(true, onClick = { onItemClicked(item) })
                 ) {
-                    Text("Item ID: ${item.id}")
-                    Text("Item Name: ${item.name}")
-                    Text("Item Description: ${item.description}")
+                    BasicText("Item ID: ${item.id}")
+                    BasicText("Item Name: ${item.name}")
+                    BasicText("Item Description: ${item.description}")
                 }
             }
         }
