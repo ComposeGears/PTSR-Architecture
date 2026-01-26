@@ -1,12 +1,12 @@
 package composegears.vts.data.repos
 
-import composegears.vts.data.models.NetworkData
-import composegears.vts.data.models.OrganizationInfo
-import composegears.vts.data.models.RepositoryInfo
+import composegears.vts.data.models.DataOrError
+import composegears.vts.data.models.ServerOrganization
+import composegears.vts.data.models.ServerRepositories
 
 interface Api {
-    suspend fun getOrganizationInfo(): NetworkData<OrganizationInfo>
-    suspend fun getOrganizationRepositories(): NetworkData<Array<RepositoryInfo>>
+    suspend fun getOrganization(): DataOrError<ServerOrganization>
+    suspend fun getOrganizationRepositories(): DataOrError<ServerRepositories>
 }
 
 class ApiImpl(
@@ -17,9 +17,9 @@ class ApiImpl(
         const val BASE_URL = "https://api.github.com"
     }
 
-    override suspend fun getOrganizationInfo(): NetworkData<OrganizationInfo> =
+    override suspend fun getOrganization(): DataOrError<ServerOrganization> =
         client.get("$BASE_URL/orgs/$ORGANIZATION")
 
-    override suspend fun getOrganizationRepositories(): NetworkData<Array<RepositoryInfo>> =
+    override suspend fun getOrganizationRepositories(): DataOrError<ServerRepositories> =
         client.get("$BASE_URL/orgs/$ORGANIZATION/repos")
 }

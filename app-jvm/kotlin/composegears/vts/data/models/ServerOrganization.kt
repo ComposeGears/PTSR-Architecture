@@ -3,9 +3,8 @@ package composegears.vts.data.models
 import kotlinx.serialization.Serializable
 
 @Serializable
-class RepositoryInfo(
+data class ServerOrganization(
     val name: String,
     val description: String = "",
-    val url: String,
 ) {
 }

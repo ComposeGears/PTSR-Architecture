@@ -1,6 +1,6 @@
 package composegears.vts.data.repos
 
-import composegears.vts.data.models.NetworkData
+import composegears.vts.data.models.DataOrError
 import io.ktor.client.call.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.plugins.contentnegotiation.*
@@ -24,11 +24,11 @@ class HttpClient {
     suspend inline fun <reified T> get(
         url: String,
         block: HttpRequestBuilder.() -> Unit = {}
-    ): NetworkData<T> = client
+    ): DataOrError<T> = client
         .get(url, block)
         .runCatching { body<T>() }
         .fold(
-            onSuccess = { NetworkData.Success(it) },
-            onFailure = { NetworkData.Error(it) }
+            onSuccess = { DataOrError.Data(it) },
+            onFailure = { DataOrError.Error(it) }
         )
 }
