@@ -24,10 +24,10 @@ class HttpClient {
     suspend inline fun <reified T> get(
         url: String,
         block: HttpRequestBuilder.() -> Unit = {}
-    ): DataOrError<T> = client
-        .get(url, block)
-        .runCatching { body<T>() }
-        .fold(
+    ): DataOrError<T> =
+        runCatching<Any, T> {
+            client.get(url, block).body()
+        }.fold(
             onSuccess = { DataOrError.Data(it) },
             onFailure = { DataOrError.Error(it) }
         )

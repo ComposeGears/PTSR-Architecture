@@ -1,4 +1,4 @@
-package composegears.vts.data.models
+package composegears.vts.data.models.domian
 
 data class DomainRepository(
     val name: String,

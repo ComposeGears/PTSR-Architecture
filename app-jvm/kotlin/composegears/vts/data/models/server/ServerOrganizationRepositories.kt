@@ -1,4 +1,4 @@
-package composegears.vts.data.models
+package composegears.vts.data.models.server
 
 import kotlinx.serialization.Serializable
 

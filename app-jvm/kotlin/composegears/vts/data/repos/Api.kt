@@ -1,8 +1,8 @@
 package composegears.vts.data.repos
 
 import composegears.vts.data.models.DataOrError
-import composegears.vts.data.models.ServerOrganization
-import composegears.vts.data.models.ServerRepositories
+import composegears.vts.data.models.server.ServerOrganization
+import composegears.vts.data.models.server.ServerRepositories
 
 interface Api {
     suspend fun getOrganization(): DataOrError<ServerOrganization>

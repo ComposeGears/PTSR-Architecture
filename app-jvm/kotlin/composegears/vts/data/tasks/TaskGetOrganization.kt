@@ -1,8 +1,8 @@
 package composegears.vts.data.tasks
 
 import composegears.vts.data.models.DataOrError
-import composegears.vts.data.models.DomainOrganization
-import composegears.vts.data.models.DomainRepository
+import composegears.vts.data.models.domian.DomainOrganization
+import composegears.vts.data.models.domian.DomainRepository
 import composegears.vts.data.repos.Api
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
