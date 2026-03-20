@@ -12,6 +12,9 @@ import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
@@ -77,6 +80,7 @@ fun TextLabel(
         textAlign = textAlign,
     )
 }
+
 @Composable
 fun TextHint(
     text: String,
@@ -113,7 +117,32 @@ fun Button(
 ) {
     Box(
         modifier = modifier
-            .border(2.dp, Theme.Colors.onSurface)
+            .border(1.dp, Theme.Colors.onSurface)
+            .clickable { onClick() }
+            .padding(8.dp)
+    ) {
+        content()
+    }
+}
+
+@Composable
+fun Tab(
+    onClick: () -> Unit,
+    isSelected: Boolean,
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit
+) {
+    Box(
+        modifier = modifier
+            .drawBehind {
+                if (isSelected) {
+                    drawRect(
+                        color = Theme.Colors.onSurface,
+                        topLeft = Offset(0f, size.height - 4.dp.toPx()),
+                        size = Size(size.width, 4.dp.toPx())
+                    )
+                }
+            }
             .clickable { onClick() }
             .padding(8.dp)
     ) {
