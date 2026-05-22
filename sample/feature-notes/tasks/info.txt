@@ -1,0 +1,54 @@
+PTSr Task Style — feature-notes
+================================
+
+Current implementation: Option B — fully separate VerbNounTask fun interfaces
+------------------------------------------------------------------------------
+The feature uses three independent fun interfaces, one per action:
+
+    interface GetNotesTask {          // regular interface: exposes a property, not a SAM function
+        val notesFlow: Flow<List<NoteModel>>
+    }
+
+    fun interface AddNoteTask {
+        fun addNote(text: String)
+    }
+
+    fun interface DeleteNoteTask {
+        fun deleteNote(id: String)
+    }
+
+Choose Option B when:
+  - Actions are independent and individually mockable in tests.
+  - Different screens only need a subset of operations
+    (e.g. NotesListScreen uses GetNotesTask + DeleteNoteTask;
+     AddNoteScreen uses only AddNoteTask).
+
+NotesSolutions implements all three interfaces and is wired by NotesDi,
+so the shared in-memory store is still a single singleton at runtime.
+
+
+Alternative: Option A — single NounTasks interface
+---------------------------------------------------
+All three operations are merged into one interface:
+
+    interface NotesTasks {
+        val notesFlow: Flow<List<NoteModel>>
+        fun addNote(text: String)
+        fun deleteNote(id: String)
+    }
+
+NotesDi would then expose a single binding:
+
+    val notesTasks by singleton<NotesTasks> { inject(notesSolutions) }
+
+Both Binding composables (NotesListScreenBinding, AddNoteScreenBinding)
+would inject the same notesTasks property.
+
+Choose Option A when:
+  - Functions share a repository and are always injected together.
+  - You prefer fewer task types and a more compact feature boundary.
+  - Individual mockability per-operation is not a priority.
+
+See README.md §4.6 for the full style-selection guide.
+
+
